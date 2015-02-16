@@ -1,4 +1,4 @@
-package org.prz.java.pm.core.entity;
+package org.prz.pm.core.entity;
 
 import javax.persistence.*;
 import java.util.List;
