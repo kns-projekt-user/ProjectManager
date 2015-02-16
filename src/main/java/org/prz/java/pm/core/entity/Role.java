@@ -1,4 +1,4 @@
-package org.prz.java.pm.core.entity;
+package main.java.org.prz.java.pm.core.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
