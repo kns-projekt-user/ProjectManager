@@ -1,4 +1,4 @@
-package main.java.org.prz.java.pm.core.entity;
+package org.prz.java.pm.core.entity;
 
 import javax.persistence.*;
 

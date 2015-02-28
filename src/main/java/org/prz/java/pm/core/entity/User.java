@@ -1,11 +1,23 @@
-package main.java.org.prz.java.pm.core.entity;
+package org.prz.java.pm.core.entity;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
-@Table(name="USERS")
-public class User extends BaseEntity{
+@Table(name="users")
+public class User {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
+    private Long id;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     @Column(name="first_name", nullable = false)
     private String firstName;
@@ -18,10 +30,6 @@ public class User extends BaseEntity{
 
     @Column(nullable = false)
     private String password;
-
-    @ManyToMany
-    @JoinColumn
-    private List<Role> roles;
 
     public String getFirstName() {
         return firstName;
@@ -55,11 +63,4 @@ public class User extends BaseEntity{
         this.lastName = lastName;
     }
 
-    public List<Role> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(List<Role> roles) {
-        this.roles = roles;
-    }
 }

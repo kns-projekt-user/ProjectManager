@@ -1,16 +1,13 @@
-package main.java.org.prz.java.pm.core.entity;
+package org.prz.java.pm.core.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 /**
  * Created by Roman on 2015-02-16.
  */
 @Entity
-@Table(name = "COMMENT")
+@Table(name = "comment")
 public class Comment extends BaseEntity{
 
     @Column(name="content", nullable = false)
@@ -19,8 +16,21 @@ public class Comment extends BaseEntity{
     @Column(name="create_date", nullable = false)
     private Date createDate;
 
-    @ManyToOne
-    private User users;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="creator_id")
+    private User user;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="task_id")
+    private Task task;
+
+    public Task getTask() {
+        return task;
+    }
+
+    public void setTask(Task task) {
+        this.task = task;
+    }
 
     public String getContent() {
         return content;
@@ -38,11 +48,11 @@ public class Comment extends BaseEntity{
         this.createDate = createDate;
     }
 
-    public User getUsers() {
-        return users;
+    public User getUser() {
+        return user;
     }
 
-    public void setUsers(User users) {
-        this.users = users;
+    public void setUser(User user) {
+        this.user = user;
     }
 }
